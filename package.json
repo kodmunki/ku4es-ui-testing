@@ -1,0 +1,53 @@
+{
+  "name": "ku4es-ui-testing",
+  "version": "1.0.0",
+  "description": "kodmunki Utilities for ECMAScript UI Testing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kodmunki/ku4es-ui-testing"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "8.*",
+    "npm": "5.*"
+  },
+  "scripts": {
+    "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install && npm run link",
+    "test": "mocha -R spec --compilers js:babel-register --recursive ./test",
+    "test-file": "mocha -R spec --compilers js:babel-register",
+    "test-cov": "cross-env NODE_ENV=test nyc npm test",
+    "test-cov-d": "open -a 'Google Chrome' ./coverage/lcov-report/index.html",
+    "eslint": "eslint './src/**/*.js' './test/**/*.js'",
+    "eslint-fix": "eslint --fix './src/**/*.js' './test/**/*.js'",
+    "check": "npm run eslint && npm run test-cov",
+    "check-d": "npm run test-cov-d",
+    "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
+    "link": "sh ./link.sh"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.*",
+    "babel-runtime": "6.*",
+    "canvas": "1.*",
+    "jsdom": "11.*"
+  },
+  "devDependencies": {
+    "babel-cli": "6.*",
+    "babel-core": "6.*",
+    "babel-plugin-istanbul": "4.*",
+    "babel-plugin-transform-runtime": "6.*",
+    "babel-preset-es2015": "6.*",
+    "babel-preset-stage-3": "6.*",
+    "babel-register": "6.*",
+    "cheerio": "1.0.0-rc.1",
+    "cross-env": "5.*",
+    "eslint": "4.*",
+    "eslint-plugin-import": "2.*",
+    "mocha": "3.*",
+    "nyc": "11.*",
+    "shx": "0.*"
+  },
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist"
+}

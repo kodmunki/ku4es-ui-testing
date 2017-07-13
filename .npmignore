@@ -1,0 +1,9 @@
+.idea
+.babelrc
+.editorconfig
+.gitignore
+.nycrc
+.nyc-output/
+coverage/
+src/
+test/

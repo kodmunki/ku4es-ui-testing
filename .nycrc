@@ -1,0 +1,23 @@
+{
+  "require": [
+    "babel-register"
+  ],
+  "include": [
+    "src/**/*.js"
+  ],
+  "reporter": [
+    "lcov",
+    "text"
+  ],
+  "sourceMap": false,
+  "instrument": false,
+  "cache": false,
+  "all": true,
+  "check-coverage": true,
+  "watermarks": {
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "statements": 100
+  }
+}
