@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { describe, it } from 'mocha';
 import jsdom from 'jsdom';
-import { loadDom, loadSafeDom, unloadDom, testDom, click, keyUp } from '../../src/testing';
+import { loadDom, loadSafeDom, unloadDom, testDom, click, keyUp, waitToAssert } from '../../src/testing';
 
 describe('testing Test', () => {
 
@@ -82,6 +82,20 @@ describe('testing Test', () => {
     keyUp(document.querySelector('#button'), { code: 27 });
     assert.equal(document.querySelector('#button').innerHTML, '1');
     unloadDom();
+  });
+
+  it('keyUp code as number', () => {
+    loadDom('<button id="button" onkeyup="this.innerHTML = 1;">0</button>');
+    keyUp(document.querySelector('#button'), 27);
+    assert.equal(document.querySelector('#button').innerHTML, '1');
+    unloadDom();
+  });
+
+  it('should wait to assert', (done) => {
+    waitToAssert(100, () => {
+      assert.ok(true);
+      done();
+    })
   });
 
 });
