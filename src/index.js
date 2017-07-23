@@ -1,9 +1,10 @@
-import { loadDom, loadSafeDom, unloadDom, click, keyUp } from './testing';
+import { loadDom, loadSafeDom, unloadDom, click, keyUp, waitToAssert } from './testing';
 
 export {
   loadDom,
   loadSafeDom,
   unloadDom,
   click,
-  keyUp
+  keyUp,
+  waitToAssert
 };
