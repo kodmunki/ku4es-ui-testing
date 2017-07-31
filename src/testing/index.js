@@ -72,10 +72,6 @@ function keyEvent(dom, event, type) {
   dom.dispatchEvent(keyboardEvent);
 }
 
-function waitToAssert(timeout, assertions) {
-  setTimeout(assertions, timeout);
-}
-
 export {
   loadDom,
   loadSafeDom,
@@ -83,6 +79,5 @@ export {
   testDom,
   click,
   keyUp,
-  keyEvent,
-  waitToAssert
+  keyEvent
 }
