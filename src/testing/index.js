@@ -1,5 +1,5 @@
 import { Assert } from 'ku4es-kernel';
-import LocalStorage from './LocalStorage'
+import LocalStorage from './LocalStorage';
 
 let jsDom;
 let virtualConsole;
@@ -10,7 +10,7 @@ function jsdom(markup, config = {}) {
     jsDom = JSDOM;
     virtualConsole = new VirtualConsole();
   }
-  const _config = Assert.exists(config.virtualConsole) ? config : Object.assign(config, { virtualConsole })
+  const _config = Assert.exists(config.virtualConsole) ? config : Object.assign(config, { virtualConsole });
   return new jsDom(markup, _config);
 }
 
@@ -30,7 +30,7 @@ function loadDom(markup = '', config) {
     },
     resources: 'usable',
     runScripts: 'dangerously'
-  }, config))
+  }, config));
 }
 
 function loadSafeDom(markup = '', config) {
@@ -80,4 +80,4 @@ export {
   click,
   keyUp,
   keyEvent
-}
+};

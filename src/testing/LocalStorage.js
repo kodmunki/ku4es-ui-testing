@@ -1,7 +1,7 @@
 export default class LocalStorage {
 
   constructor() {
-    this._store = { }
+    this._store = { };
   }
 
   getItem(key) {
