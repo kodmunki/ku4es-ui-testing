@@ -9,7 +9,7 @@ export default class LocalStorage {
   }
 
   setItem(key, value) {
-    this._store[key] = value;
+    this._store[key] = value.toString();
   }
 
   removeItem(key) {
