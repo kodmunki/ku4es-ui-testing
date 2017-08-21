@@ -28,7 +28,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "canvas": "^1.6.6",
-    "jsdom": "11.*"
+    "jsdom": "^11.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -41,7 +41,7 @@
     "babel-register": "^6.26.0",
     "cheerio": "1.0.0-rc.2",
     "cross-env": "^5.0.2",
-    "eslint": "^4.3.0",
+    "eslint": "^4.5.0",
     "eslint-plugin-import": "2.*",
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
