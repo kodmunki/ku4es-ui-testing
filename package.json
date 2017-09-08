@@ -41,10 +41,10 @@
     "babel-register": "^6.26.0",
     "cheerio": "1.0.0-rc.2",
     "cross-env": "^5.0.2",
-    "eslint": "^4.5.0",
+    "eslint": "^4.6.1",
     "eslint-plugin-import": "2.*",
     "mocha": "^3.5.0",
-    "nyc": "^11.1.0",
+    "nyc": "^11.2.1",
     "shx": "0.*"
   },
   "files": [
