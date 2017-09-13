@@ -15,8 +15,10 @@ function jsdom(markup, config = {}) {
 }
 
 function testDom(markup = '<!DOCTYPE html><body></body></html>', config) {
-  const { window } = jsdom(markup, config);
+  const dom = jsdom(markup, config);
+  const { window } = dom;
   window.localStorage = new LocalStorage();
+  window.location.setUrl = (url) => dom.reconfigure({ url });
   global.window  = window;
   global.navigator = 'ku4es';
   global.document = window.document;
