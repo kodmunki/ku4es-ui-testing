@@ -14,7 +14,7 @@ describe('testing Test', () => {
   });
 
   it('testDom custom', () => {
-    testDom('<!DOCTYPE html><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
+    testDom('<!DOCTYPE html><html><head></head><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);

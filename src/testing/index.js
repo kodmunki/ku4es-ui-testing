@@ -14,21 +14,20 @@ function jsdom(markup, config = {}) {
   return new jsDom(markup, _config);
 }
 
-function testDom(markup = '<!DOCTYPE html><body></body></html>', config) {
+function testDom(markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) {
   const dom = jsdom(markup, config);
   const { window } = dom;
   window.localStorage = new LocalStorage();
   window.location.setUrl = (url) => dom.reconfigure({ url });
   global.window  = window;
-  global.navigator = 'ku4es';
   global.document = window.document;
 }
 
 function loadDom(markup = '', config) {
   loadSafeDom(markup, Object.assign({
     features: {
-      FetchExternalResources : ['img', 'script', 'noscript'],
-      ProcessExternalResources: ['img', 'script', 'noscript']
+      FetchExternalResources : ['img', 'script'],
+      ProcessExternalResources: ['img', 'script']
     },
     resources: 'usable',
     runScripts: 'dangerously'
@@ -37,7 +36,7 @@ function loadDom(markup = '', config) {
 
 function loadSafeDom(markup = '', config) {
   const dom = Assert.isNullOrEmpty(markup) ? '' : markup;
-  testDom(`<!DOCTYPE html><html><body>${dom}</body></html>`, config);
+  testDom(`<!DOCTYPE html><html><head></head><body>${dom}</body></html>`, config);
 }
 
 function unloadDom() {
