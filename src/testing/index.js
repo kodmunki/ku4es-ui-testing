@@ -27,8 +27,8 @@ function testDom(markup = '<!DOCTYPE html><body></body></html>', config) {
 function loadDom(markup = '', config) {
   loadSafeDom(markup, Object.assign({
     features: {
-      FetchExternalResources : ['img', 'script'],
-      ProcessExternalResources: ['img', 'script']
+      FetchExternalResources : ['img', 'script', 'noscript'],
+      ProcessExternalResources: ['img', 'script', 'noscript']
     },
     resources: 'usable',
     runScripts: 'dangerously'
