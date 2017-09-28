@@ -37,7 +37,7 @@ function loadDom(markup = '', config) {
 
 function loadSafeDom(markup = '', config) {
   const dom = Assert.isNullOrEmpty(markup) ? '' : markup;
-  testDom(`<!DOCTYPE html><body>${dom}</body></html>`, config);
+  testDom(`<!DOCTYPE html><html><body>${dom}</body></html>`, config);
 }
 
 function unloadDom() {
@@ -47,8 +47,8 @@ function unloadDom() {
   delete global.document;
 }
 
-function click(dom, event) {
-  const mouseEvent = new window.MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+function click(dom, event, bubbles = true, cancelable = true) {
+  const mouseEvent = new window.MouseEvent('click', { bubbles, cancelable, view: window });
   Object.assign(mouseEvent, event);
   dom.dispatchEvent(mouseEvent);
 }
