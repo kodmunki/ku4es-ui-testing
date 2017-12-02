@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "ku4es-ui-testing",
   "version": "1.0.0",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
