@@ -5,7 +5,7 @@ import performance from '../../src/testing/performance';
 describe('performance Test', () => {
 
   it('should pass', () => {
-    const test = () => { return 1 + 1; };
+    const test = () => 1 + 1;
     assert.ok(performance(test) < 10);
   });
 

@@ -18,7 +18,7 @@ function testDom(markup = '<!DOCTYPE html><html><head></head><body></body></html
   const dom = jsdom(markup, config);
   const { window } = dom;
   window.localStorage = new LocalStorage();
-  window.location.setUrl = (url) => dom.reconfigure({ url });
+  window.location.setUrl = url => dom.reconfigure({ url });
   global.window  = window;
   global.document = window.document;
 }

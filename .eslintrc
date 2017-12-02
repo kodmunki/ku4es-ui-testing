@@ -19,12 +19,15 @@
     }
   },
   "rules": {
+    "arrow-parens": [2, "as-needed", { "requireForBlockBody": true }],
+    "arrow-body-style": [2, "as-needed"],
     "block-spacing": 2,
     "comma-dangle": 0,
     "comma-spacing": 2,
     "curly": 2,
     "eol-last": 2,
     "eqeqeq": 2,
+    "getter-return": [2, { "allowImplicit": true }],
     "indent": [2, 2, {
       "SwitchCase": 1,
       "VariableDeclarator": 2
@@ -34,11 +37,14 @@
     "no-console": 2,
     "no-debugger": 2,
     "no-eval": 2,
+    "no-ex-assign": 2,
     "no-extra-boolean-cast": 0,
+    "no-func-assign": 2,
     "no-implicit-globals": 2,
     "no-irregular-whitespace": 2,
     "no-lone-blocks": 0,
     "no-nested-ternary": 0,
+    "no-return-assign": 2,
     "no-trailing-spaces": 2,
     "no-underscore-dangle": 0,
     "no-unneeded-ternary": 2,
