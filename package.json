@@ -1,6 +1,6 @@
 {
   "name": "@kodmunki/ku4es-ui-testing",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "build": "shx mkdir -p dist && babel src -d dist --source-maps inline"
   },
   "dependencies": {
-    "@kodmunki/ku4es-kernel": "^1.0.1",
+    "@kodmunki/ku4es-kernel": "^1.0.2",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "canvas": "^1.6.7",
@@ -48,9 +48,9 @@
     "shx": "0.x"
   },
   "files": [
-    "./dist"
+    "dist"
   ],
-  "main": "./dist",
+  "main": "dist",
   "bugs": {
     "url": "https://github.com/kodmunki/ku4es-ui-testing/issues"
   },
