@@ -21,6 +21,10 @@
     "lint-fix": "eslint --fix './src/**/*.js' './test/**/*.js'",
     "check": "npm run lint && npm run test-cov",
     "check-d": "npm run test-cov-d",
+    "docs": "npm run jsdocs && npm run mddocs",
+    "docs-read": "open -a 'Google Chrome' ./jsdoc/index.html",
+    "jsdocs": "rm -rf jsdoc ; jsdoc -c ./jsdoc.json",
+    "mddocs": "rm README.API.md ; jsdoc2md --files ./src/* > README.API.md",
     "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
     "prepublish": "npm run build"
   },
@@ -44,6 +48,7 @@
     "cross-env": "^5.1.1",
     "eslint": "^4.12.1",
     "eslint-plugin-import": "^2.8.0",
+    "jsdoc-to-markdown": "^4.0.0",
     "mocha": "4.x",
     "nyc": "^11.4.0",
     "shx": "0.x"
