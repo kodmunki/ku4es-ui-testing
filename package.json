@@ -24,7 +24,7 @@
     "docs": "npm run jsdocs && npm run mddocs",
     "docs-read": "open -a 'Google Chrome' ./jsdoc/index.html",
     "jsdocs": "rm -rf jsdoc ; jsdoc -c ./jsdoc.json",
-    "mddocs": "rm README.API.md ; jsdoc2md --files ./src/* > README.API.md",
+    "mddocs": "rm README.API.md ; jsdoc2md --files \"src/**/*.js\" > README.API.md",
     "build": "shx mkdir -p dist && babel src -d dist --source-maps inline",
     "prepublish": "npm run build"
   },
