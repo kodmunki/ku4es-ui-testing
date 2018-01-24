@@ -3,8 +3,8 @@
     "transform-runtime"
   ],
   "presets": [
-    "es2015",
-    "stage-0"
+    "env",
+    "stage-3"
   ],
   "env": {
     "test": {
