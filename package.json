@@ -8,8 +8,8 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "8.x",
-    "npm": "5.x"
+    "node": "8",
+    "npm": "5"
   },
   "scripts": {
     "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm install",
