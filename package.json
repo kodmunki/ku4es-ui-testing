@@ -1,5 +1,5 @@
 {
-  "name": "@kodmunki/ku4es-ui-testing",
+  "name": "ku4es-ui-testing",
   "version": "1.4.1",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
   "repository": {
@@ -29,28 +29,28 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@kodmunki/ku4es-kernel": "^1.4.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "canvas": "^1.6.7",
-    "jsdom": "^11.6.0"
+    "canvas": "^1.6.13",
+    "jsdom": "^11.12.0",
+    "ku4es-kernel": "^3.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-plugin-istanbul": "^4.1.5",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "cheerio": "1.0.0-rc.2",
-    "cross-env": "^5.1.1",
-    "eslint": "^4.16.0",
-    "eslint-plugin-import": "^2.8.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.14.0",
     "jsdoc-to-markdown": "^4.0.0",
-    "mocha": "^5.0.0",
-    "nyc": "^11.4.0",
+    "mocha": "^5.2.0",
+    "nyc": "^11.9.0",
     "shx": "^0.2.2"
   },
   "files": [
