@@ -1,4 +1,4 @@
-import { Assert } from '@kodmunki/ku4es-kernel';
+import { Assert } from 'ku4es-kernel';
 import LocalStorage from './LocalStorage';
 
 let jsDom;
