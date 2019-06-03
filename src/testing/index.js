@@ -1,5 +1,4 @@
 import { Assert } from 'ku4es-kernel';
-import LocalStorage from './LocalStorage';
 
 let jsDom;
 let virtualConsole;
@@ -10,14 +9,13 @@ function jsdom(markup, config = {}) {
     jsDom = JSDOM;
     virtualConsole = new VirtualConsole();
   }
-  const _config = Assert.exists(config.virtualConsole) ? config : Object.assign(config, { virtualConsole });
-  return new jsDom(markup, _config);
+  const _config = Assert.exists(config.virtualConsole) ? config : Object.assign({}, config, { virtualConsole });
+  return new jsDom(markup, Object.assign({url: 'http://localhost'}, _config));
 }
 
 function testDom(markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) {
   const dom = jsdom(markup, config);
   const { window } = dom;
-  window.localStorage = new LocalStorage();
   window.location.setUrl = url => dom.reconfigure({ url });
   global.window  = window;
   global.document = window.document;
