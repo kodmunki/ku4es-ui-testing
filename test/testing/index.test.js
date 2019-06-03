@@ -27,7 +27,7 @@ describe('testing Test', () => {
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
-    assert.equal(window.location.href, 'about:blank');
+    assert.equal(window.location.href, 'http://localhost/');
     window.location.setUrl('http://new.url.com');
     assert.equal(window.location.href, 'http://new.url.com/');
     unloadDom();
