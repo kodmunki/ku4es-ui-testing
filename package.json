@@ -1,6 +1,6 @@
 {
   "name": "ku4es-ui-testing",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
   "repository": {
     "type": "git",
@@ -28,10 +28,13 @@
     "build": "rm -rf dist && mkdir -p dist && babel src -d dist --source-maps inline",
     "prepare": "npm run build"
   },
+  "pre-commit": [
+    "lint-fix",
+    "test-cov"
+  ],
   "dependencies": {
-    "canvas": "^2.5.0",
     "jsdom": "15.1.1",
-    "ku4es-kernel": "^5.1.0"
+    "ku4es-kernel": "^5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -45,10 +48,10 @@
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.17.3",
     "cheerio": "1.0.0-rc.3",
-    "cross-env": "^5.2.0",
     "jsdoc-to-markdown": "^5.0.0",
     "mocha": "^6.1.4",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "pre-commit": "^1.2.2"
   },
   "files": [
     "dist"
