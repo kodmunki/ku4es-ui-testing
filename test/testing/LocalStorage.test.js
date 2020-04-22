@@ -7,7 +7,7 @@ describe('LocalStorage Test', () => {
     const localStorage = new LocalStorage();
 
     localStorage.setItem('key', 'value');
-    assert.equal(localStorage.getItem('key'), 'value');
+    assert.strictEqual(localStorage.getItem('key'), 'value');
 
     localStorage.removeItem('key');
     assert.ok(!localStorage.getItem('key'));

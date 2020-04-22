@@ -5,7 +5,7 @@ import { loadDom, loadSafeDom, unloadDom, loadTestDom, click, keyUp } from '../.
 
 describe('testing Test', () => {
 
-  it('testDom default', () => {
+  it('loadTestDom default', () => {
     loadTestDom();
     assert.ok(window);
     assert.ok(window.localStorage);
@@ -13,12 +13,12 @@ describe('testing Test', () => {
     unloadDom();
   });
 
-  it('testDom custom', () => {
+  it('loadTestDom custom', () => {
     loadTestDom('<!DOCTYPE html><html><head></head><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
-    assert.equal(document.getElementsByTagName('div').length, 1);
+    assert.strictEqual(document.getElementsByTagName('div').length, 1);
     unloadDom();
   });
 
@@ -27,9 +27,9 @@ describe('testing Test', () => {
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
-    assert.equal(window.location.href, 'http://localhost/');
+    assert.strictEqual(window.location.href, 'http://localhost/');
     window.location.setUrl('http://new.url.com');
-    assert.equal(window.location.href, 'http://new.url.com/');
+    assert.strictEqual(window.location.href, 'http://new.url.com/');
     unloadDom();
   });
 
@@ -38,7 +38,20 @@ describe('testing Test', () => {
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
-    assert.equal(document.getElementsByTagName('div').length, 1);
+    assert.strictEqual(document.getElementsByTagName('div').length, 1);
+    unloadDom();
+  });
+
+  it('loadDom custom head and body', () => {
+    loadDom({
+      head: '<meta name="value"/>',
+      body: '<div></div>'
+    });
+    assert.ok(window);
+    assert.ok(window.localStorage);
+    assert.ok(document);
+    assert.strictEqual(document.head.innerHTML, '<meta name="value">');
+    assert.strictEqual(document.getElementsByTagName('div').length, 1);
     unloadDom();
   });
 
@@ -55,42 +68,42 @@ describe('testing Test', () => {
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
-    assert.equal(document.getElementsByTagName('div').length, 1);
+    assert.strictEqual(document.getElementsByTagName('div').length, 1);
     unloadDom();
   });
 
   it('click', () => {
     loadDom('<button id="button" onclick="this.innerHTML = 1;">0</button>');
     click(document.querySelector('#button'));
-    assert.equal(document.querySelector('#button').innerHTML, '1');
+    assert.strictEqual(document.querySelector('#button').innerHTML, '1');
     unloadDom();
   });
 
   it('keyUp keyCode', () => {
     loadDom('<button id="button" onkeyup="this.innerHTML = 1;">0</button>');
     keyUp(document.querySelector('#button'), { keyCode: 27 });
-    assert.equal(document.querySelector('#button').innerHTML, '1');
+    assert.strictEqual(document.querySelector('#button').innerHTML, '1');
     unloadDom();
   });
 
   it('keyUp which', () => {
     loadDom('<button id="button" onkeyup="this.innerHTML = 1;">0</button>');
     keyUp(document.querySelector('#button'), { which: 27 });
-    assert.equal(document.querySelector('#button').innerHTML, '1');
+    assert.strictEqual(document.querySelector('#button').innerHTML, '1');
     unloadDom();
   });
 
   it('keyUp code', () => {
     loadDom('<button id="button" onkeyup="this.innerHTML = 1;">0</button>');
     keyUp(document.querySelector('#button'), { code: 27 });
-    assert.equal(document.querySelector('#button').innerHTML, '1');
+    assert.strictEqual(document.querySelector('#button').innerHTML, '1');
     unloadDom();
   });
 
   it('keyUp code as number', () => {
     loadDom('<button id="button" onkeyup="this.innerHTML = 1;">0</button>');
     keyUp(document.querySelector('#button'), 27);
-    assert.equal(document.querySelector('#button').innerHTML, '1');
+    assert.strictEqual(document.querySelector('#button').innerHTML, '1');
     unloadDom();
   });
 

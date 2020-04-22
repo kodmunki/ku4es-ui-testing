@@ -21,8 +21,8 @@ function loadTestDom(markup = '<!DOCTYPE html><html><head></head><body></body></
   global.document = window.document;
 }
 
-function loadDom(markup = '', config) {
-  loadSafeDom(markup, Object.assign({
+function loadDom(content, config) {
+  loadSafeDom(content, Object.assign({
     features: {
       FetchExternalResources : ['img', 'script'],
       ProcessExternalResources: ['img', 'script']
@@ -32,9 +32,10 @@ function loadDom(markup = '', config) {
   }, config));
 }
 
-function loadSafeDom(markup = '', config) {
-  const dom = Assert.isNullOrEmpty(markup) ? '' : markup;
-  loadTestDom(`<!DOCTYPE html><html><head></head><body>${dom}</body></html>`, config);
+function loadSafeDom(content, config) {
+  const head = content && content.head ? content.head : '';
+  const body = content && content.body ? content.body : content;
+  loadTestDom(`<!DOCTYPE html><html>${head || ''}<head></head><body>${Assert.isString(body) ? body : ''}</body></html>`, config);
 }
 
 function unloadDom() {
