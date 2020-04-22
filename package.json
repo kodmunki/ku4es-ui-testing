@@ -1,6 +1,6 @@
 {
   "name": "ku4es-ui-testing",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
