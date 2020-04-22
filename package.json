@@ -1,7 +1,9 @@
 {
   "name": "ku4es-ui-testing",
-  "version": "1.6.1",
+  "version": "2.0.0",
   "description": "kodmunki Utilities for ECMAScript UI Testing",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kodmunki/ku4es-ui-testing.git"
@@ -26,6 +28,15 @@
     "jsdocs": "rm -rf jsdoc ; jsdoc -c ./jsdoc.json",
     "mddocs": "rm README.API.md ; jsdoc2md --files 'src/**/*.js' > README.API.md",
     "build": "rm -rf dist && mkdir -p dist && babel src -d dist --source-maps inline",
+    "version:alpha": "npm version prerelease --preid=alpha --no-git-tag-version && git commit -am'alpha' && git push",
+    "version:beta": "npm version prerelease --preid=beta --no-git-tag-version && git commit -am'beta' && git push",
+    "version:rc": "npm version prerelease --preid=rc --no-git-tag-version && git commit -am'rc' && git push",
+    "release": "npm run build && npm publish && npm run release:browser",
+    "release:alpha": "npm run build && npm run version:alpha && npm publish --tag next",
+    "release:beta": "npm run build && npm run version:beta && npm publish --tag next",
+    "release:rc": "npm run build && npm run version:rc && npm publish --tag next",
+    "release:browser": "sh scripts/release-browser.sh",
+    "remove:next": "npm dist-tags rm ku4es-ui-kernel next",
     "prepare": "npm run build"
   },
   "pre-commit": [
@@ -33,30 +44,29 @@
     "test-cov"
   ],
   "dependencies": {
-    "jsdom": "^16.2.1",
-    "ku4es-kernel": "^5.1.1"
+    "jsdom": "^16.2.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.9.0",
     "@babel/polyfill": "^7.8.7",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/register": "^7.8.6",
-    "@babel/runtime": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "cheerio": "1.0.0-rc.3",
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "jsdoc-to-markdown": "^5.0.3",
-    "mocha": "^7.1.0",
-    "nyc": "^15.0.0",
+    "ku4es-kernel": "^7.1.2",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1",
     "pre-commit": "^1.2.2"
   },
   "files": [
     "dist"
   ],
-  "main": "dist",
   "bugs": {
     "url": "https://github.com/kodmunki/ku4es-ui-testing/issues"
   },
