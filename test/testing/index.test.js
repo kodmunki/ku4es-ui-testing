@@ -1,12 +1,12 @@
 import assert from 'assert';
 import { describe, it } from 'mocha';
 import jsdom from 'jsdom';
-import { loadDom, loadSafeDom, unloadDom, testDom, click, keyUp } from '../../src/testing';
+import { loadDom, loadSafeDom, unloadDom, loadTestDom, click, keyUp } from '../../src/testing';
 
 describe('testing Test', () => {
 
   it('testDom default', () => {
-    testDom();
+    loadTestDom();
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);
@@ -14,7 +14,7 @@ describe('testing Test', () => {
   });
 
   it('testDom custom', () => {
-    testDom('<!DOCTYPE html><html><head></head><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
+    loadTestDom('<!DOCTYPE html><html><head></head><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
     assert.ok(window);
     assert.ok(window.localStorage);
     assert.ok(document);

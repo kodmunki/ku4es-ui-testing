@@ -31,11 +31,10 @@
     "version:alpha": "npm version prerelease --preid=alpha --no-git-tag-version && git commit -am'alpha' && git push",
     "version:beta": "npm version prerelease --preid=beta --no-git-tag-version && git commit -am'beta' && git push",
     "version:rc": "npm version prerelease --preid=rc --no-git-tag-version && git commit -am'rc' && git push",
-    "release": "npm run build && npm publish && npm run release:browser",
+    "release": "npm run build && npm publish",
     "release:alpha": "npm run build && npm run version:alpha && npm publish --tag next",
     "release:beta": "npm run build && npm run version:beta && npm publish --tag next",
     "release:rc": "npm run build && npm run version:rc && npm publish --tag next",
-    "release:browser": "sh scripts/release-browser.sh",
     "remove:next": "npm dist-tags rm ku4es-ui-kernel next",
     "prepare": "npm run build"
   },

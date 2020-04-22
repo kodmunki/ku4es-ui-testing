@@ -13,7 +13,7 @@ function jsdom(markup, config = {}) {
   return new jsDom(markup, Object.assign({url: 'http://localhost'}, _config));
 }
 
-function testDom(markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) {
+function loadTestDom(markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) {
   const dom = jsdom(markup, config);
   const { window } = dom;
   window.location.setUrl = url => dom.reconfigure({ url });
@@ -34,7 +34,7 @@ function loadDom(markup = '', config) {
 
 function loadSafeDom(markup = '', config) {
   const dom = Assert.isNullOrEmpty(markup) ? '' : markup;
-  testDom(`<!DOCTYPE html><html><head></head><body>${dom}</body></html>`, config);
+  loadTestDom(`<!DOCTYPE html><html><head></head><body>${dom}</body></html>`, config);
 }
 
 function unloadDom() {
@@ -74,8 +74,8 @@ function keyEvent(dom, event, type) {
 export {
   loadDom,
   loadSafeDom,
+  loadTestDom,
   unloadDom,
-  testDom,
   click,
   keyUp,
   keyEvent
