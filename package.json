@@ -7,12 +7,12 @@
     "url": "git+https://github.com/kodmunki/ku4es-ui-testing.git"
   },
   "engines": {
-    "node": "14.x",
-    "npm": "6.x"
+    "node": "15.x",
+    "npm": "7.x"
   },
   "scripts": {
     "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm i",
-    "test": "mocha --timeout 5000 -R spec --require @babel/register --recursive ./test",
+    "test": "mocha --timeout 5000 -R spec --require @babel/register --require regenerator-runtime --recursive ./test",
     "test:file": "mocha -R spec --require @babel/register",
     "test:cov": "NODE_ENV=test nyc npm test",
     "test:covd": "open -a 'Google Chrome' ./coverage/lcov-report/index.html",
@@ -52,18 +52,19 @@
     "@babel/register": "^7.8.6",
     "@babel/runtime": "^7.8.7",
     "@rollup/plugin-babel": "^5.2.1",
-    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
-    "cheerio": "1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.5",
     "eslint": "^7.11.0",
     "eslint-plugin-import": "^2.20.1",
     "jsdoc-to-markdown": "^6.0.1",
     "mocha": "^8.2.0",
     "nyc": "^15.0.0",
     "pre-commit": "^1.2.2",
+    "regenerator-runtime": "^0.13.7",
     "rollup": "^2.32.0",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-node-builtins": "^2.1.2",
