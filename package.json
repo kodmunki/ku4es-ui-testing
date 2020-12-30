@@ -7,8 +7,8 @@
     "url": "git+https://github.com/kodmunki/ku4es-ui-testing.git"
   },
   "engines": {
-    "node": "15.x",
-    "npm": "7.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
   "scripts": {
     "reload": "rm -rf ./node_modules && rm -f ./package-lock.json && npm i",
