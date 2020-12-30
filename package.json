@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "jsdom": "^16.2.1",
-    "ku4es-kernel": "^8.0.0"
+    "ku4es-kernel": "^8.3.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
