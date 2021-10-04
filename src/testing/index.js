@@ -3,7 +3,7 @@ import { Assert } from 'ku4es-kernel';
 let jsDom;
 let virtualConsole;
 
-function jsdom(markup, config = {}) {
+export const jsdom = (markup, config = {}) => {
   if(!Assert.exists(jsDom)) {
     const { JSDOM, VirtualConsole } = require('jsdom');
     jsDom = JSDOM;
@@ -11,17 +11,18 @@ function jsdom(markup, config = {}) {
   }
   const _config = Assert.exists(config.virtualConsole) ? config : Object.assign({}, config, { virtualConsole });
   return new jsDom(markup, Object.assign({url: 'http://localhost'}, _config));
-}
+};
 
-function testDom(markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) {
+export const testDom = (markup = '<!DOCTYPE html><html><head></head><body></body></html>', config) => {
   const dom = jsdom(markup, config);
   const { window } = dom;
   window.location.setUrl = url => dom.reconfigure({ url });
+  global.self = window;
   global.window  = window;
   global.document = window.document;
-}
+};
 
-function loadDom(markup = '', config) {
+export const loadDom = (markup = '', config) => {
   loadSafeDom(markup, Object.assign({
     features: {
       FetchExternalResources : ['img', 'script'],
@@ -30,31 +31,31 @@ function loadDom(markup = '', config) {
     resources: 'usable',
     runScripts: 'dangerously'
   }, config));
-}
+};
 
-function loadSafeDom(markup = '', config) {
+export const loadSafeDom = (markup = '', config) => {
   const dom = Assert.isNullOrEmpty(markup) ? '' : markup;
   testDom(`<!DOCTYPE html><html><head></head><body>${dom}</body></html>`, config);
-}
+};
 
-function unloadDom() {
+export const unloadDom = () => {
   window.close();
   delete global.window;
   delete global.navigator;
   delete global.document;
-}
+};
 
-function click(dom, event, bubbles = true, cancelable = true) {
+export const click = (dom, event, bubbles = true, cancelable = true) => {
   const mouseEvent = new window.MouseEvent('click', { bubbles, cancelable, view: window });
   Object.assign(mouseEvent, event);
   dom.dispatchEvent(mouseEvent);
-}
+};
 
-function keyUp(dom, event) {
+export const keyUp = (dom, event) => {
   keyEvent(dom, event, 'keyup');
-}
+};
 
-function keyEvent(dom, event, type) {
+export const keyEvent = (dom, event, type) => {
   const { keyCode, which, code, ctrlKey = false, shiftKey = false, altKey = false, metaKey = false } = event;
   const _event = (Assert.isNumber(event)) ? { keyCode: event, which: event }
     : (Assert.exists(keyCode)) ? { keyCode, which: keyCode }
@@ -69,14 +70,4 @@ function keyEvent(dom, event, type) {
   });
 
   dom.dispatchEvent(keyboardEvent);
-}
-
-export {
-  loadDom,
-  loadSafeDom,
-  unloadDom,
-  testDom,
-  click,
-  keyUp,
-  keyEvent
 };
