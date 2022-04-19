@@ -28,6 +28,7 @@ export default class WebSocket {
    * @param {string} url - url to connect to.
    */
   constructor(url) {
+    this.#readyState = readyState.CLOSED;
     /**
      * Retains a list of active WeSocket stubs. Useful for
      * unit testing server drops.
