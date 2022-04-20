@@ -37,12 +37,21 @@ describe('WebSocket Test', () => {
     socket.error();
   });
 
+  it('should not send on closed socket', () => {
+    const socket = new WebSocket('ws://ws.endpoint');
+    socket.addEventListener('message', (message) => {
+      assert.equal(message, 'message');
+    });
+    assert.throws(() => socket.send('message'));
+  });
+
   it('should send', (done) => {
     const socket = new WebSocket('ws://ws.endpoint');
     socket.addEventListener('message', (message) => {
       assert.equal(message, 'message');
       done();
     });
+    socket.open();
     socket.send('message');
   });
 
@@ -63,6 +72,7 @@ describe('WebSocket Test', () => {
     assert.ok(close);
 
     socket.removeEventListener('message');
+    WebSocket.instances['ws://ws.endpoint'].open();
     WebSocket.instances['ws://ws.endpoint'].send('another message');
     assert.equal(send, 'message');
 

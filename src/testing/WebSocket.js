@@ -64,7 +64,12 @@ export default class WebSocket {
    * @param {string} message - message to send
    */
   send(message) {
-    this.#listeners.message(message);
+    if(this.#readyState === readyState.OPEN) {
+      this.#listeners.message(message);
+    }
+    else {
+      throw new Error('Cannot send on disconnected WebSocket. You must first call `open().');
+    }
   }
 
   addEventListener(action, method) {
