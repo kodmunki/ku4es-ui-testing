@@ -13,14 +13,17 @@ export default [{
     format: 'cjs',
   }, {
     file: 'browser/index.js',
-    format: 'umd',
-    name: 'ku4es_ui_testing',
+    format: 'iife',
+    name: 'ku4es_ui_kernel',
   }],
   plugins: [
-    babel({ exclude: 'node_modules/**' }),
+    commonjs(),
+    babel({
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**'
+    }),
     builtins(),
     cleanup(),
-    commonjs(),
     json(),
     terser(),
     resolve({

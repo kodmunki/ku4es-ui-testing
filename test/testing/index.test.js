@@ -9,6 +9,7 @@ describe('testing Test', () => {
     testDom();
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     unloadDom();
   });
@@ -17,6 +18,7 @@ describe('testing Test', () => {
     testDom('<!DOCTYPE html><html><head></head><body><div></div></body></html>', { virtualConsole: new jsdom.VirtualConsole() });
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     assert.equal(document.getElementsByTagName('div').length, 1);
     unloadDom();
@@ -26,6 +28,7 @@ describe('testing Test', () => {
     loadDom();
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     assert.equal(window.location.href, 'http://localhost/');
     window.location.setUrl('http://new.url.com');
@@ -37,6 +40,7 @@ describe('testing Test', () => {
     loadDom('<div></div>');
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     assert.equal(document.getElementsByTagName('div').length, 1);
     unloadDom();
@@ -46,6 +50,7 @@ describe('testing Test', () => {
     loadSafeDom();
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     unloadDom();
   });
@@ -54,6 +59,7 @@ describe('testing Test', () => {
     loadSafeDom('<div></div>');
     assert.ok(window);
     assert.ok(window.localStorage);
+    assert.ok(window.WebSocket);
     assert.ok(document);
     assert.equal(document.getElementsByTagName('div').length, 1);
     unloadDom();

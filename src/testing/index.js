@@ -1,4 +1,5 @@
 import { Assert } from 'ku4es-kernel';
+import WebSocket from './WebSocket';
 
 let jsDom;
 let virtualConsole;
@@ -17,8 +18,10 @@ export const testDom = (markup = '<!DOCTYPE html><html><head></head><body></body
   const dom = jsdom(markup, config);
   const { window } = dom;
   window.location.setUrl = url => dom.reconfigure({ url });
+  global.self = window;
   global.window  = window;
   global.document = window.document;
+  global.WebSocket = WebSocket;
 };
 
 export const loadDom = (markup = '', config) => {
@@ -42,6 +45,7 @@ export const unloadDom = () => {
   delete global.window;
   delete global.navigator;
   delete global.document;
+  delete global.WebSocket;
 };
 
 export const click = (dom, event, bubbles = true, cancelable = true) => {
