@@ -14,7 +14,7 @@ export default [{
   }, {
     file: 'browser/index.js',
     format: 'iife',
-    name: 'ku4es_ui_testing',
+    name: 'ku4es_ui_kernel',
   }],
   plugins: [
     commonjs(),
