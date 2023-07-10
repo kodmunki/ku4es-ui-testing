@@ -68,7 +68,7 @@ export default class WebSocket {
       this.#listeners.message(message);
     }
     else {
-      throw new Error('Cannot send on disconnected WebSocket. You must first call `open().');
+      throw new Error('Cannot send on CLOSED WebSocket. First call `open()`.');
     }
   }
 
